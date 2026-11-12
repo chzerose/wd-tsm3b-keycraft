@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<title>KeyCraft // User Profile</title>
+
+<link
+  rel="stylesheet"
+  href="css/style.css"
+>
+
+
+<style>
+
+/* ============================================================
+   PROFILE PAGE
+   ============================================================ */
+
+.profile-page {
+
+  padding:
+    70px 24px;
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+.profile-layout {
+
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    300px 1fr;
+
+  gap: 24px;
+
+}
+
+
+/* ============================================================
+   PROFILE CARD
+   ============================================================ */
+
+.profile-card {
+
+  background:
+    var(--panel);
+
+  border:
+    2px solid var(--border);
+
+  padding: 25px;
+
+  text-align: center;
+
+}
+
+
+.profile-photo {
+
+  width: 150px;
+
+  height: 150px;
+
+  margin:
+    0 auto 22px;
+
+  border:
+    3px solid var(--cyan);
+
+  background:
+    var(--bg);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  box-shadow:
+    6px 6px 0 var(--border);
+
+}
+
+
+.profile-photo img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+
+.profile-placeholder {
+
+  font-family:
+    var(--font-pixel);
+
+  font-size: 28px;
+
+  color: var(--cyan);
+
+}
+
+
+.profile-nickname {
+
+  font-family:
+    var(--font-pixel);
+
+  color:
+    var(--text);
+
+  font-size: 16px;
+
+  line-height: 1.6;
+
+}
+
+
+.profile-username {
+
+  font-family:
+    var(--font-mono);
+
+  color:
+    var(--purple);
+
+  font-size: 12px;
+
+  margin-top: 5px;
+
+}
+
+
+.profile-id {
+
+  margin-top: 20px;
+
+  padding: 10px;
+
+  border:
+    2px dashed var(--border);
+
+  font-family:
+    var(--font-mono);
+
+  font-size: 10px;
+
+  color:
+    var(--text-muted);
+
+}
+
+
+.profile-id strong {
+
+  color:
+    var(--cyan);
+
+}
+
+
+/* ============================================================
+   PROFILE INFO
+   ============================================================ */
+
+.profile-info {
+
+  padding: 28px;
+
+  background:
+    var(--panel);
+
+  border:
+    2px solid var(--border);
+
+}
+
+
+.profile-heading {
+
+  font-family:
+    var(--font-pixel);
+
+  color:
+    var(--cyan);
+
+  font-size: 18px;
+
+  margin-bottom: 25px;
+
+}
+
+
+.profile-section {
+
+  border-top:
+    2px solid var(--border);
+
+  padding:
+    20px 0;
+
+}
+
+
+.profile-section:first-of-type {
+
+  border-top: none;
+
+  padding-top: 0;
+
+}
+
+
+.profile-label {
+
+  font-family:
+    var(--font-mono);
+
+  color:
+    var(--purple);
+
+  font-size: 10px;
+
+  margin-bottom: 8px;
+
+}
+
+
+.profile-bio {
+
+  color:
+    var(--text);
+
+  font-size: 14px;
+
+}
+
+
+/* ============================================================
+   STATS
+   ============================================================ */
+
+.stats {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 10px;
+
+}
+
+
+.stat {
+
+  padding: 15px;
+
+  background:
+    var(--bg);
+
+  border:
+    2px solid var(--border);
+
+}
+
+
+.stat-number {
+
+  display: block;
+
+  font-family:
+    var(--font-pixel);
+
+  font-size: 18px;
+
+  color:
+    var(--cyan);
+
+  margin-bottom: 8px;
+
+}
+
+
+.stat-label {
+
+  font-family:
+    var(--font-mono);
+
+  font-size: 9px;
+
+  color:
+    var(--text-muted);
+
+}
+
+
+.sound-display {
+
+  font-family:
+    var(--font-pixel);
+
+  color:
+    var(--pink);
+
+  font-size: 13px;
+
+}
+
+
+.profile-actions {
+
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 750px) {
+
+  .profile-layout {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .stats {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+}
+
+</style>
+
+<meta name="description" content="View and manage your KeyCraft profile and account details.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='6' width='52' height='52' rx='12' fill='%2312161d' stroke='%234DE8F0' stroke-width='4'/%3E%3Crect x='16' y='14' width='32' height='28' rx='7' fill='%234DE8F0'/%3E%3Ctext x='32' y='36' font-family='monospace' font-size='20' font-weight='bold' text-anchor='middle' fill='%2312161d'%3EK%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="KeyCraft // User Profile">
+<meta property="og:description" content="View and manage your KeyCraft profile and account details.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="css/theme.css">
+<script src="js/theme.js"></script>
+</head>
+
+
+<body>
+
+<div
+  class="bg-grid"
+  aria-hidden="true"
+></div>
+
+<div
+  class="bg-scanlines"
+  aria-hidden="true"
+></div>
+
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+
+<header class="topnav">
+
+<div class="topnav-inner">
+
+
+<!-- LOGO -->
+
+<a
+  href="index.html"
+  class="logo"
+>
+
+  KEYCRAFT
+
+  <span
+    class="led"
+    aria-hidden="true"
+  ></span>
+
+</a>
+
+
+<!-- MOBILE MENU -->
+
+<button
+  class="nav-burger"
+  aria-label="Toggle menu"
+  type="button"
+>
+
+  ☰ MENU
+
+</button>
+
+
+<!-- MAIN NAV -->
+
+<nav
+  class="navlinks"
+  aria-label="Primary"
+>
+
+  <a
+    class="navlink"
+    href="index.html"
+  >
+    HOME
+  </a>
+
+
+  <a
+    class="navlink"
+    href="marketplace.html"
+  >
+    MARKETPLACE
+  </a>
+
+
+  <a
+    class="navlink"
+    href="customize.html"
+  >
+    CUSTOMIZE
+  </a>
+
+
+  <a
+    class="navlink"
+    href="cart.html"
+  >
+    KEYBOARD
+  </a>
+
+
+  <a
+    class="navlink"
+    href="index.html#about"
+  >
+    ABOUT
+  </a>
+
+</nav>
+
+
+<!-- RIGHT SIDE NAV -->
+
+<div class="nav-right"><button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode"><span class="tt-knob" aria-hidden="true"></span><svg class="tt-icon tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg><svg class="tt-icon tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M5.3 18.7l1.9-1.9M16.8 7.2l1.9-1.9"/></svg></button>
+
+
+<!-- SOUND -->
+
+<button
+  class="sound-toggle"
+  aria-pressed="true"
+  type="button"
+>
+
+  <span class="dot"></span>
+
+  <span class="label-text">
+    SOUND: ON
+  </span>
+
+</button>
+
+
+<!-- CART -->
+
+<a
+  href="cart.html"
+  class="cart-badge"
+  aria-label="Cart"
+>
+
+  CART <b>00</b>
+
+</a>
+
+
+<!-- USER PROFILE -->
+
+<!-- auth.js will automatically insert the profile avatar here -->
+
+<div id="kc-user-nav"></div>
+
+
+</div>
+
+
+</div>
+
+</header>
+
+
+<!-- ============================================================
+     PROFILE
+============================================================ -->
+
+<main class="profile-page">
+
+
+<div class="profile-layout">
+
+
+<!-- PROFILE CARD -->
+
+<section class="profile-card">
+
+
+<div
+  id="profile-photo"
+  class="profile-photo"
+>
+
+  <span class="profile-placeholder">
+    KC
+  </span>
+
+</div>
+
+
+<h1
+  id="profile-nickname"
+  class="profile-nickname"
+>
+
+  USER
+
+</h1>
+
+
+<p
+  id="profile-username"
+  class="profile-username"
+>
+
+  @username
+
+</p>
+
+
+<div class="profile-id">
+
+  KEY ID
+
+  <br>
+
+  <strong id="profile-key-id">
+    KC-XXXX-XXXX
+  </strong>
+
+</div>
+
+
+</section>
+
+
+<!-- PROFILE INFORMATION -->
+
+<section class="profile-info">
+
+
+<p class="label">
+
+  KEYCRAFT USER PROFILE //
+  IDENTITY DATA
+
+</p>
+
+
+<h2 class="profile-heading">
+
+  USER DATA
+
+</h2>
+
+
+<!-- BIO -->
+
+<div class="profile-section">
+
+  <p class="profile-label">
+    BIO
+  </p>
+
+
+  <p
+    id="profile-bio"
+    class="profile-bio"
+  >
+
+    No bio provided.
+
+  </p>
+
+</div>
+
+
+<!-- SOUND -->
+
+<div class="profile-section">
+
+  <p class="profile-label">
+
+    FAVORITE KEY SOUND
+
+  </p>
+
+
+  <p
+    id="profile-sound"
+    class="sound-display"
+  >
+
+    THOCK
+
+  </p>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="profile-section">
+
+  <p class="profile-label">
+
+    KEYCRAFT ACTIVITY
+
+  </p>
+
+
+  <div class="stats">
+
+
+    <div class="stat">
+
+      <span
+        id="stat-owned"
+        class="stat-number"
+      >
+
+        00
+
+      </span>
+
+
+      <span class="stat-label">
+
+        KEYS OWNED
+
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <span
+        id="stat-designs"
+        class="stat-number"
+      >
+
+        00
+
+      </span>
+
+
+      <span class="stat-label">
+
+        CUSTOM DESIGNS
+
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <span
+        id="stat-days"
+        class="stat-number"
+      >
+
+        00
+
+      </span>
+
+
+      <span class="stat-label">
+
+        DAYS ACTIVE
+
+      </span>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<!-- ACTIONS -->
+
+<div class="profile-section">
+
+  <div class="profile-actions">
+
+
+    <a
+      href="cart.html"
+      class="btn btn-primary"
+    >
+
+      [ MY KEYBOARD ]
+
+    </a>
+
+
+    <a
+      href="customize.html"
+      class="btn"
+    >
+
+      CUSTOMIZE
+
+    </a>
+
+
+    <button
+      class="btn btn-danger"
+      data-kc-logout
+    >
+
+      LOG OUT
+
+    </button>
+
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+</div>
+
+</main>
+
+
+<script src="js/sounds.js"></script>
+
+<script src="js/cart-store.js"></script>
+
+<script src="js/main.js"></script>
+
+<script src="js/auth.js"></script>
+
+
+<script>
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+
+    /* ========================================================
+       REQUIRE LOGIN
+       ======================================================== */
+
+    kcRequireLogin();
+
+
+    const user =
+      kcGetCurrentUser();
+
+
+    if (!user) return;
+
+
+    /* ========================================================
+       PROFILE PHOTO
+       ======================================================== */
+
+    const photo =
+      document.getElementById(
+        "profile-photo"
+      );
+
+
+    if (user.profilePhoto) {
+
+      photo.innerHTML = `
+
+        <img
+          src="${user.profilePhoto}"
+          alt="${escapeHTML(
+            user.nickname
+          )}"
+        >
+
+      `;
+
+    }
+
+
+    /* ========================================================
+       BASIC INFORMATION
+       ======================================================== */
+
+    document.getElementById(
+      "profile-nickname"
+    ).textContent =
+      user.nickname;
+
+
+    document.getElementById(
+      "profile-username"
+    ).textContent =
+      "@" + user.username;
+
+
+    document.getElementById(
+      "profile-key-id"
+    ).textContent =
+      user.keyID;
+
+
+    document.getElementById(
+      "profile-bio"
+    ).textContent =
+      user.bio ||
+      "No bio provided.";
+
+
+    document.getElementById(
+      "profile-sound"
+    ).textContent =
+      (
+        user.favoriteSound ||
+        "thock"
+      ).toUpperCase();
+
+
+    /* ========================================================
+       STATS
+       ======================================================== */
+
+    document.getElementById(
+      "stat-owned"
+    ).textContent =
+
+      String(
+        user.stats?.keysOwned || 0
+      ).padStart(2, "0");
+
+
+    document.getElementById(
+      "stat-designs"
+    ).textContent =
+
+      String(
+        user.stats?.customDesigns || 0
+      ).padStart(2, "0");
+
+
+    /* ========================================================
+       DAYS ACTIVE
+       ======================================================== */
+
+    const created =
+      new Date(
+        user.createdAt
+      );
+
+
+    const now =
+      new Date();
+
+
+    const difference =
+      Math.floor(
+
+        (
+          now - created
+        ) /
+
+        (
+          1000 *
+          60 *
+          60 *
+          24
+        )
+
+      );
+
+
+    document.getElementById(
+      "stat-days"
+    ).textContent =
+
+      String(
+        Math.max(
+          0,
+          difference
+        )
+      ).padStart(
+        2,
+        "0"
+      );
+
+  }
+
+);
+
+</script>
+
+</body>
+
+</html>
