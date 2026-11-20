@@ -1,0 +1,43 @@
+/* FAQs and Terms page */
+.info-main { max-width: 860px; }
+.info-head { margin-bottom: 28px; }
+.info-head h1 { font-size: 20px; color: var(--pink); }
+.info-head .label { color: var(--text-muted); }
+
+.info-card { margin-bottom: 28px; scroll-margin-top: 90px; }
+.info-card .panel-title { margin-bottom: 16px; }
+
+.faq { border-bottom: var(--px) solid var(--border); }
+.faq:last-child { border-bottom: none; }
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 28px 14px 0;
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: '+';
+  position: absolute;
+  right: 4px;
+  top: 12px;
+  font-size: 20px;
+  color: var(--cyan);
+  transition: transform 0.2s ease;
+}
+.faq[open] summary { color: var(--cyan); }
+.faq[open] summary::after { content: '\2212'; }
+.faq summary:hover { color: var(--cyan); }
+.faq summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.faq p { margin: 0 0 16px; color: var(--text-muted); line-height: 1.7; font-size: 14px; }
+
+.terms-list { margin: 0; padding-left: 22px; color: var(--text-muted); line-height: 1.7; font-size: 14px; }
+.terms-list li { margin-bottom: 10px; }
+.terms-list strong { color: var(--text); }
+.info-updated { margin-top: 18px; color: var(--text-dim); }
+
+[data-theme="light"] .faq { border-color: #cfeaf8; }
+[data-theme="light"] .faq summary { font-weight: 700; }
