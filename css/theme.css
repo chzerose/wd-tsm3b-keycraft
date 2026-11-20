@@ -830,3 +830,40 @@ html:not([data-theme="light"]) .site-footer {
     border-bottom: 1px solid #fff; border-radius: 0 0 22px 22px; box-shadow: 0 18px 30px -14px rgba(30,140,210,0.55);
   }
 }
+
+
+/* ============================================================
+   SIMPLE SHARED FOOTER (same on every page)
+============================================================ */
+.site-footer { margin-top: 60px; padding: 26px 0; }
+.site-footer .footer-simple {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+.footer-logo {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  text-decoration: none;
+}
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 22px; }
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 4px 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible { color: var(--cyan); border-bottom-color: var(--cyan); }
+.site-footer .footer-copy { font-size: 11px; color: var(--text-dim); }
+[data-theme="light"] .footer-logo { font-weight: 900; }
+[data-theme="light"] .site-footer .footer-copy { color: var(--text-muted); }
